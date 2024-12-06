@@ -1,0 +1,321 @@
+ DOCS.RS
+ futures-util-preview-0.2.2 
+ Platform 
+ Feature flags
+Rust
+  
+futures_util
+0.2.2
+Module stream
+
+Module Items
+Structs
+Traits
+Functions
+In crate futures_util
+
+Modules
+future
+io
+prelude
+sink
+stream
+
+futures_util
+Module streamCopy item path
+Settings
+Help
+
+Summary
+Source
+Streams
+
+This module contains a number of functions for working with Streams, including the StreamExt trait which adds methods to Stream types.
+Structs
+
+AndThen	A stream combinator which chains a computation onto values produced by a stream.
+BufferUnordered	An adaptor for a stream of futures to execute the futures concurrently, if possible, delivering results as they become available.
+Buffered	An adaptor for a stream of futures to execute the futures concurrently, if possible.
+CatchUnwind	Stream for the catch_unwind combinator.
+Chain	An adapter for chaining the output of two streams.
+Chunks	An adaptor that chunks up elements in a vector.
+Collect	A future which collects all of the values of a stream into a vector.
+Concat	A stream combinator to concatenate the results of a stream into the first yielded item.
+Empty	A stream which contains no elements.
+ErrInto	A stream combinator to change the error type of a stream.
+Filter	A stream combinator used to filter the results of a stream and only yield some values.
+FilterMap	A combinator used to filter the results of a stream and simultaneously map them to a different type.
+Flatten	A combinator used to flatten a stream-of-streams into one long stream of elements.
+Fold	A future used to collect all the results of a stream into one generic type.
+ForEach	A stream combinator which executes a unit closure over each item on a stream.
+ForEachConcurrent	A stream combinator which executes a unit closure over each item on a stream concurrently.
+Forward	Future for the Stream::forward combinator, which sends a stream of values to a sink and then waits until the sink has fully flushed those values.
+Fuse	A stream which “fuse“s a stream once it’s terminated.
+FuturesOrdered	An unbounded queue of futures.
+FuturesUnordered	A set of Futures which may complete in any order.
+Inspect	Do something with the items of a stream, passing it on.
+InspectErr	Do something with the error of a stream, passing it on.
+IterOk	A stream which is just a shim over an underlying instance of Iterator.
+IterResult	A stream which is just a shim over an underlying instance of Iterator.
+Map	A stream combinator which will change the type of a stream from one type to another.
+MapErr	A stream combinator which will change the error type of a stream from one type to another.
+Once	A stream which emits single element and then EOF.
+OrElse	A stream combinator which chains a computation onto errors produced by a stream.
+Peekable	A Stream that implements a peek method.
+PollFn	A stream which adapts a function returning Poll.
+Recover	Future for the recover combinator, handling errors by converting them into an Option<Item>, such that a None value terminates the stream. Recover is compatible with any error type of the caller’s choosing.
+Repeat	Stream that produces the same element repeatedly.
+ReuniteError	Error indicating a SplitSink<S> and SplitStream<S> were not two halves of a Stream + Split, and thus could not be reunited.
+Select	An adapter for merging the output of two streams.
+SelectAll	An unbounded set of streams
+Skip	A stream combinator which skips a number of elements before continuing.
+SkipWhile	A stream combinator which skips elements of a stream while a predicate holds.
+SplitSink	A Sink part of the split pair
+SplitStream	A Stream part of the split pair
+StreamFuture	A combinator used to temporarily convert a stream into a future.
+Take	A stream combinator which returns a maximum number of elements.
+TakeWhile	A stream combinator which takes elements from a stream while a predicate holds.
+Then	A stream combinator which chains a computation onto each item produced by a stream.
+Unfold	A stream which creates futures, polls them and return their result
+Zip	An adapter for merging the output of two streams.
+Traits
+
+StreamExt	An extension trait for Streams that provides a variety of convenient combinator functions.
+Functions
+
+empty	Creates a stream which contains no elements.
+futures_ordered	Converts a list of futures into a Stream of results from the futures.
+futures_unordered	Converts a list of futures into a Stream of results from the futures.
+iter_ok	Converts an Iterator into a Stream which is always ready to yield the next value.
+iter_result	Converts an Iterator over Results into a Stream which is always ready to yield the next value.
+once	Creates a stream of single element
+poll_fn	Creates a new stream wrapping around a function returning Poll.
+repeat	Create a stream which produces the same item repeatedly.
+select_all	Convert a list of streams into a Stream of results from the streams.
+unfold	Creates a Stream from a seed and a closure returning a Future.
+
+ DOCS.RS
+ futures-util-preview-0.2.2 
+ Platform 
+ Feature flags
+Rust
+  
+futures_util
+0.2.2
+Module future
+
+Module Items
+Re-exports
+Structs
+Enums
+Traits
+Functions
+In crate futures_util
+
+Modules
+future
+io
+prelude
+sink
+stream
+
+futures_util
+Module futureCopy item path
+Settings
+Help
+
+Summary
+Source
+Futures
+
+This module contains a number of functions for working with Futures, including the FutureExt trait which adds methods to Future types.
+Re-exports
+
+pub use self::select_all::SelectAllNext;
+Structs
+
+AndThen	Future for the and_then combinator, chaining a computation onto the end of another future which completes successfully.
+CatchUnwind	Future for the catch_unwind combinator.
+Empty	A future which is never resolved.
+ErrInto	Future for the err_into combinator, changing the error type of a future.
+Flatten	Future for the flatten combinator.
+FlattenSink	Future for the flatten_sink combinator, flattening a future-of-a-sink to get just the result of the final sink as a sink.
+FlattenStream	Future for the flatten_stream combinator, flattening a future-of-a-stream to get just the result of the final stream as a stream.
+Fuse	A future which “fuses” a future once it’s been resolved.
+Inspect	Do something with the item of a future, passing it on.
+InspectErr	Do something with the error of a future, passing it on.
+IntoStream	A type which converts a Future into a Stream containing a single element.
+Join	Future for the join combinator, waiting for two futures to complete.
+Join3	Future for the join3 combinator, waiting for three futures to complete.
+Join4	Future for the join4 combinator, waiting for four futures to complete.
+Join5	Future for the join5 combinator, waiting for five futures to complete.
+JoinAll	A future which takes a list of futures and resolves with a vector of the completed values.
+Lazy	A future which defers creation of the actual future until the future is polled.
+LoopFn	A future implementing a tail-recursive loop.
+Map	Future for the map combinator, changing the type of a future.
+MapErr	Future for the map_err combinator, changing the error type of a future.
+OrElse	Future for the or_else combinator, chaining a computation onto the end of a future which fails with an error.
+PollFn	A future which adapts a function returning Poll.
+Recover	Future for the recover combinator, handling errors by converting them into an Item, compatible with any error type of the caller’s choosing.
+Select	Future for the select combinator, waiting for one of two differently-typed futures to complete.
+SelectAll	Future for the select_all combinator, waiting for one of any of a list of futures to complete.
+SelectOk	Future for the select_ok combinator, waiting for one of any of a list of futures to successfully complete. Unlike select_all, this future ignores all but the last error, if there are any.
+Shared	A future that is cloneable and can be polled in multiple threads. Use Future::shared() method to convert any future into a Shared future.
+SharedError	A wrapped error of the original future that is cloneable and implements Deref for ease of use.
+SharedItem	A wrapped item of the original future that is cloneable and implements Deref for ease of use.
+Then	Future for the then combinator, chaining computations on the end of another future regardless of its outcome.
+WithExecutor	Future for the with_executor combinator, assigning an executor to be used when spawning other futures.
+Enums
+
+Either	The enum Either with variants Left and Right is a general purpose sum type with two cases.
+Loop	An enum describing whether to break or continue a loop_fn loop.
+Traits
+
+FutureExt	An extension trait for Futures that provides a variety of convenient combinator functions.
+Functions
+
+empty	Creates a future which never resolves, representing a computation that never finishes.
+join_all	Creates a future which represents a collection of the results of the futures given.
+lazy	Creates a new future which will eventually be the same as the one created by the closure provided.
+loop_fn	Creates a new future implementing a tail-recursive loop.
+poll_fn	Creates a new future wrapping around a function returning Poll.
+select_all	Creates a new future which will select over a list of futures.
+select_ok	Creates a new future which will select the first successful future over a list of futures.
+ DOCS.RS
+ futures-util-preview-0.2.2 
+ Platform 
+ Feature flags
+Rust
+  
+futures_util
+0.2.2
+Module io
+
+Module Items
+Structs
+Traits
+In crate futures_util
+
+Modules
+future
+io
+prelude
+sink
+stream
+
+futures_util
+Module ioCopy item path
+Settings
+Help
+
+Summary
+Source
+IO
+
+This module contains a number of functions for working with AsyncRead and AsyncWrite types, including the AsyncReadExt and AsyncWriteExt traits which add methods to the AsyncRead and AsyncWrite types.
+Structs
+
+AllowStdIo	A simple wrapper type which allows types which implement only implement std::io::Read or std::io::Write to be used in contexts which expect an AsyncRead or AsyncWrite.
+Close	A future used to fully close an I/O object.
+CopyInto	A future which will copy all data from a reader into a writer.
+Flush	A future used to fully flush an I/O object.
+IoVec	A specialized byte slice type for performing vectored I/O operations.
+Read	A future which can be used to easily read available number of bytes to fill a buffer.
+ReadExact	A future which can be used to easily read exactly enough bytes to fill a buffer.
+ReadHalf	The readable half of an object returned from AsyncRead::split.
+ReadToEnd	A future which can be used to easily read the entire contents of a stream into a vector.
+Window	A owned window around an underlying buffer.
+WriteAll	A future used to write the entire contents of some data to a stream.
+WriteHalf	The writable half of an object returned from AsyncRead::split.
+Traits
+
+AsyncRead	Read bytes asynchronously.
+AsyncReadExt	An extension trait which adds utility methods to AsyncRead types.
+AsyncWrite	Write bytes asynchronously.
+AsyncWriteExt	An extension trait which adds utility methods to AsyncWrite types.
+
+
+ DOCS.RS
+ futures-util-preview-0.2.2 
+ Platform 
+ Feature flags
+Rust
+  
+futures_util
+0.2.2
+Module sink
+
+Module Items
+Structs
+Traits
+In crate futures_util
+
+Modules
+future
+io
+prelude
+sink
+stream
+
+futures_util
+Module sinkCopy item path
+Settings
+Help
+
+Summary
+Source
+Sinks
+
+This module contains a number of functions for working with Sinks, including the SinkExt trait which adds methods to Sink types.
+Structs
+
+Buffer	Sink for the Sink::buffer combinator, which buffers up to some fixed number of values when the underlying sink is unable to accept them.
+Close	Future for the close combinator, which polls the sink until all data has been closed.
+Fanout	Sink that clones incoming items and forwards them to two sinks at the same time.
+Flush	Future for the flush combinator, which polls the sink until all data has been flushed.
+Send	Future for the Sink::send combinator, which sends a value to a sink and then waits until the sink has fully flushed.
+SendAll	Future for the Sink::send_all combinator, which sends a stream of values to a sink and then waits until the sink has fully flushed those values.
+SinkErrInto	A sink combinator to change the error type of a sink.
+SinkMapErr	Sink for the Sink::sink_map_err combinator.
+With	Sink for the Sink::with combinator, chaining a computation to run prior to pushing a value into the underlying sink.
+WithFlatMap	Sink for the Sink::with_flat_map combinator, chaining a computation that returns an iterator to run prior to pushing a value into the underlying sink
+Traits
+
+SinkExt	An extension trait for Sinks that provides a variety of convenient combinator functions.
+
+ DOCS.RS
+ futures-util-preview-0.2.2 
+ Platform 
+ Feature flags
+Rust
+  
+futures_util
+0.2.2
+Module prelude
+
+Module Items
+Re-exports
+In crate futures_util
+
+Modules
+future
+io
+prelude
+sink
+stream
+
+futures_util
+Module preludeCopy item path
+Settings
+Help
+
+Summary
+Source
+Prelude containing the extension traits, which add functionality to existing asynchronous types.
+Re-exports
+
+pub use FutureExt;
+pub use StreamExt;
+pub use SinkExt;
+pub use AsyncReadExt;
+pub use AsyncWriteExt;
